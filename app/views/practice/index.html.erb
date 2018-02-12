@@ -1,0 +1,45 @@
+<!-- <p>app/views/practice/index.html.erb</p> -->
+<!--  Ways to get here:  
+	1) user typed in URL http://localhost:3000/index
+	2) form_tag index_path in about.html.erb -->
+
+<h1>Choose a Color!</h1>
+
+<!-- If user came directly here from URL or didn't enter name in
+	text_field_tag.  @name is unknown -->
+<% if !@name.blank? %> 
+  <h2>Welcome Back, <%= @name %></h2>
+<% end %>	
+
+<p>
+	<!-- Creates anchor element "Red" that routes to
+		controllers/practice_controller.rb about action, i.e., 
+		views/practice/about.html.erb -->
+	<!-- color: "red" comes to controller action as "params[:color]"-->
+	<%= link_to "Red", about_path(color: "red") %>
+</p>
+
+<p>
+    <%= link_to "Blue", about_path(color: "blue") %>
+</p>
+
+<p>
+    <%= link_to "Green", about_path(color: "green") %>
+</p>
+
+<p>
+    <%= link_to "Yellow", about_path(color: "yellow") %>
+</p>
+
+
+<!-- -->
+
+<p>
+<%= "Instance Methods" %> <br/>
+<%= "PostsController.new.methods-Object.new.methods" %> <br/>
+<% @m_arr= (PostsController.new.methods-Object.new.methods).sort%>
+<% @m_arr.each do |m| %>
+	<%= m %>
+	<br/>
+<%end%>
+</p>

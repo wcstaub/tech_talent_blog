@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Blog entry:</strong>
+  <%= @post.blog_entry %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+
+<!-- Allow comments to be added on the post show page -->
+<div id="comments">
+    <%= render 'comments/form', comment: @comment %>
+    <% @post.comments.each do |comment| %>
+    	<p>
+        <%= link_to comment.user.user_name, user_posts_path(:id comment.user_id)%> said...
+        <!-- Following line never worked -->
+        <!-- by <%= @post.user.username %> --> 
+        <br/>
+ 	    	<%= comment.comment_entry %>
+		</p>
+    <% end %>
+</div>
+
+<%= link_to 'Back', posts_path %>
